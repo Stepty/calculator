@@ -83,4 +83,21 @@ document.querySelector("#add").addEventListener("click", () => operatorFunction(
 document.querySelector("#subtract").addEventListener("click", () => operatorFunction("-"));
 document.querySelector("#multiply").addEventListener("click", () => operatorFunction("*"));
 document.querySelector("#divide").addEventListener("click", () => operatorFunction("/"));
+document.querySelector("#percent").addEventListener("click", () => display.textContent = Number(display.textContent / 100.0));
+document.querySelector("#decimal").addEventListener("click", () => {
+    if (!display.textContent.includes(".")) {
+        display.textContent = display.textContent + ".";
+    }
+});
+document.querySelector("#change-sign").addEventListener("click", () => {
+    if (display.textContent == "0") {
+        return null;
+    }
+    else if (display.textContent.includes("-")) {
+        display.textContent = display.textContent.replace("-", "");
+    }
+    else {
+        display.textContent = "-" + display.textContent;
+    }
+});
 
