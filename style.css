@@ -1,7 +1,10 @@
 :root {
     --main-color: brown;
     --secondary-color: white;
-    --border: black;
+    --border-color: black;
+    --hover-color: blue;
+    --active-color: lightblue;
+    --font: 'Times New Roman', TImes, serif;
 }
 body {
     background: var(--main-color);
@@ -9,11 +12,12 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    font-family: var(--font);
 }
 .calculator-container {
     height: 50%;
     width: 25%;
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-color);
 }
 .display {
     width: 100%;
@@ -30,7 +34,15 @@ body {
     grid-template-columns: repeat(4, 1fr);
 }
 button {
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-color);
+    font-family: var(--font);
+}
+button:hover {
+    background: var(--hover-color);
+    transition: 0.1s;
+}   
+button:active {
+    background: var(--active-color);
 }
 #zero {
     grid-column: span 2;
