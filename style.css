@@ -7,6 +7,7 @@
     --font: 'Times New Roman', TImes, serif;
 }
 body {
+    margin: 0;
     background: var(--main-color);
     display: flex;
     align-items: center;
