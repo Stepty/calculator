@@ -5,6 +5,8 @@
     --hover-color: blue;
     --active-color: lightblue;
     --font: 'Times New Roman', TImes, serif;
+    --right-color: orange;
+    --top-color: grey;
 }
 body {
     margin: 0;
@@ -18,7 +20,8 @@ body {
 .calculator-container {
     height: 50%;
     width: 25%;
-    border: 1px solid var(--border-color);
+    border: 5px solid var(--border-color);
+    border-radius: 5px;
 }
 .display {
     width: 100%;
@@ -27,6 +30,7 @@ body {
     font-size: 100px;
     display: flex;
     justify-content: right;
+    overflow: hidden;
 }
 .button-container {
     display: grid;
@@ -34,7 +38,11 @@ body {
     width: 100%;
     grid-template-columns: repeat(4, 1fr);
 }
+button:nth-child(1), button:nth-child(2), button:nth-child(3) {
+    background: var(--top-color);
+}
 button {
+    font-size: 30px;
     border: 1px solid var(--border-color);
     font-family: var(--font);
 }
@@ -47,4 +55,7 @@ button:active {
 }
 #zero {
     grid-column: span 2;
+}
+.right-side {
+    background: var(--right-color);
 }

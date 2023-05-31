@@ -1,21 +1,22 @@
 // variables
-let firstNumber;
-let operator;
-let secondNumber;
+let firstNumber = "";
+let operator = "";
+let secondNumber = "";
 let displayValue = "";
 
 // basic functions 
 const add = (num1, num2) =>  num1 + num2;
 const subtract = (num1, num2) => num1 - num2;
 const multiply = (num1, num2) => num1 * num2;
-const divide = (num1, num2) => num1 / num2;
+const divide = (num1, num2) => {
+    if (num1 / num2) {
+        return num1 / num2;
+    }
+};
 
 const operate = (num1, operator, num2) => {
     num1 = Number(num1);
     num2 = Number(num2);
-    if (num1 == "" || num2 == "" || operator == "") {
-        return 0;
-    }
     if (operator == "+") {
        return add(num1, num2);
     }
@@ -41,10 +42,19 @@ function clearDisplay() {
     display.textContent = "0";
 }
 function operatorFunction(displayOperator) {
+
+    if (firstNumber == "") {
     // save display value
     firstNumber = display.textContent;
     // save opeartor value
     operator = displayOperator;
+    }
+    else {
+        secondNumber = display.textContent;
+        firstNumber = operate(firstNumber, operator, secondNumber);
+        display.textContent = firstNumber;
+        operator = displayOperator;
+    }
     // display the display value
     displayValue = "";
 }
@@ -68,14 +78,22 @@ document.querySelector("#nine").addEventListener("click", () => addNumber("9"));
 // event listeners for operator buttons
 document.querySelector("#clear").addEventListener("click", () => clearDisplay());
 document.querySelector("#equal").addEventListener("click", () => {
-    let solution;
+    let solution = "";
     // save display value
     secondNumber = display.textContent;
     // add numbers
     solution = operate(firstNumber, operator, secondNumber);
-    clearDisplay();
-    // display solution
-    display.textContent = solution;
+    if (solution == "Infinity"){
+        clearDisplay();
+        display.textContent = "Error";
+    }
+    else if (solution == undefined) {
+    }
+    else if (solution !== "Invalid Operator") {
+        clearDisplay();
+        // display solution
+        display.textContent = solution;
+    }
 
 
 });
